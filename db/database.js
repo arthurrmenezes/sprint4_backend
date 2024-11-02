@@ -8,7 +8,6 @@ const db = new sqlite3.Database('./consultas.db', (err) => {
   }
 });
 
-// Criar a tabela de usuários
 db.serialize(() => {
   db.run(`CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -17,7 +16,6 @@ db.serialize(() => {
     role TEXT NOT NULL
   )`);
 
-  // Criar a tabela de consultas
   db.run(`CREATE TABLE IF NOT EXISTS consultations (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     doctor TEXT NOT NULL,

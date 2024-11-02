@@ -1,6 +1,5 @@
 const db = require('../db/database');
 
-// Obter todas as consultas
 exports.getConsultations = (req, res) => {
   db.all('SELECT * FROM consultations', [], (err, rows) => {
     if (err) {
@@ -12,7 +11,6 @@ exports.getConsultations = (req, res) => {
   });
 };
 
-// Criar uma nova consulta
 exports.createConsultation = (req, res) => {
   const { doctor, date, status, userId } = req.body;
   db.run('INSERT INTO consultations (doctor, date, status, userId) VALUES (?, ?, ?, ?)', [doctor, date, status, userId], function (err) {
@@ -25,7 +23,6 @@ exports.createConsultation = (req, res) => {
   });
 };
 
-// Atualizar consulta
 exports.updateConsultation = (req, res) => {
   const { id } = req.params;
   const { doctor, date, status } = req.body;
@@ -40,7 +37,6 @@ exports.updateConsultation = (req, res) => {
   });
 };
 
-// Deletar consulta
 exports.deleteConsultation = (req, res) => {
   const { id } = req.params;
 
